@@ -1101,3 +1101,4 @@ dismissDialog("Project Settings"); // k:br (cl:JFrame)
 // [Engine Memory]: 1,674 MB (+3377kb) [02:33:30]
 // [GUI Memory]: 294 MB (+401kb) [02:39:17]
 // HMemoryUtils.trashcanNow. Engine heap size: 1,705 MB. GUI used memory: 273 MB. Current time: 3/23/22 12:15:17 PM GMT
+// HMemoryUtils.trashcanNow. Engine heap size: 1,711 MB. GUI used memory: 247 MB. Current time: 3/23/22 12:17:42 PM GMT
