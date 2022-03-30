@@ -80,16 +80,22 @@ always @ (HADDR)
           dec = 16'b0000_0000_00000010;  // one-hot code 
           MUX_SEL = 4'd1;                // slave number 
         end
-    8'h50: 				// Address range 0x0000_0000 to 0x00FF_FFFF  16MB
-          begin
-            dec = 16'b0000_0000_00000100;  // one-hot code for slave select
-            MUX_SEL = 4'd2;                // 4-bit slave number for multiplexer
-          end
+    8'h50: 				// Address range 0x5000_0000 to 0x50FF_FFFF  16MB
+		  begin
+			dec = 16'b0000_0000_00000100;  // one-hot code for slave select
+			MUX_SEL = 4'd2;                // 4-bit slave number for multiplexer
+		  end
     
-    8'h51: 				// Address range 0x0000_0000 to 0x00FF_FFFF  16MB
+    8'h51: 				// Address range 0x51000_0000 to 0x51FF_FFFF  16MB
         begin
           dec = 16'b0000_0000_00001000;  // one-hot code for slave select
           MUX_SEL = 4'd3;                // 4-bit slave number for multiplexer
+        end
+		
+	8'h52: 				// Address range 0x5200_0000 to 0x52FF_FFFF  16MB
+        begin
+          dec = 16'b0000_0000_00010000;  // one-hot code for slave select
+          MUX_SEL = 4'd4;                // 4-bit slave number for multiplexer
         end
                 // Add more cases here if there are more slaves
 
