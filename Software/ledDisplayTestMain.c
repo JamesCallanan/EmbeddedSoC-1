@@ -16,7 +16,7 @@
 #define CASE_BIT						('A' ^ 'a')
 #define nLOOPS_per_DELAY		1000000
 
-#define INVERT_LEDS					(GPIO_LED ^= 0xff)
+#define INVERT_LEDS					(gpioLed ^= 0xff)
 
 #define ARRAY_SIZE(__x__)   (sizeof(__x__)/sizeof(__x__[0]))
 
@@ -32,82 +32,94 @@ void SysTick_ISR()
 	// Do nothing - this interrupt is not used here
 }
 
-// function to display temperature code
-void dispTempLED(uint8 number)
+//////////////////////////////////////////////////////////////////
+// Interrupt service routine, runs when UART interrupt occurs - see cm0dsasm.s
+//////////////////////////////////////////////////////////////////
+void UART_ISR()		
 {
+	
+}
+
+// function to display temperature code
+uint32 dispTempLED(uint8 number)
+{
+	uint32 gpioLed;
+	
 	switch(number)
 	{
 		case 0:
-			GPIO_LED = 0x0000;
+			gpioLed = 0x0000;
 			break;
 			
 		case 1:
-			GPIO_LED = 0x0001;
+			gpioLed = 0x0001;
 			break;
 		
 		case 2:
-			GPIO_LED = 0x0003;
+			gpioLed = 0x0003;
 			break;
 			
 		case 3:
-			GPIO_LED = 0x0007;
+			gpioLed = 0x0007;
 			break;
 			
 		case 4:
-			GPIO_LED = 0x000F;
+			gpioLed = 0x000F;
 			break;
 			
 		case 5:
-			GPIO_LED = 0x001F;
+			gpioLed = 0x001F;
 			break;
 			
 		case 6:
-			GPIO_LED = 0x003F;
+			gpioLed = 0x003F;
 			break;
 			
 		case 7:
-			GPIO_LED = 0x007F;
+			gpioLed = 0x007F;
 			break;
 			
 		case 8: 
-			GPIO_LED = 0x00FF;
+			gpioLed = 0x00FF;
 			break;
 			
 		case 9:
-			GPIO_LED = 0x01FF;
+			gpioLed = 0x01FF;
 			break;
 			
 		case 10:
-			GPIO_LED = 0x03FF;
+			gpioLed = 0x03FF;
 			break;
 			
 		case 11:
-			GPIO_LED = 0x07FF;
+			gpioLed = 0x07FF;
 			break;
 			
 		case 12:
-			GPIO_LED = 0x0FFF;
+			gpioLed = 0x0FFF;
 			break;
 			
 		case 13:
-			GPIO_LED = 0x1FFF;
+			gpioLed = 0x1FFF;
 			break;
 			
 		case 14:
-			GPIO_LED = 0x3FFF;
+			gpioLed = 0x3FFF;
 			break;
 			
 		case 15:
-			GPIO_LED = 0x7FFF;
+			gpioLed = 0x7FFF;
 			break;
 			
 		case 16:
-			GPIO_LED = 0xFFF;
+			gpioLed = 0xFFFF;
 			break;
 			
 		default:
-			GPIO_LED = 0x0000;
+			gpioLed = 0x0000;
 			break;
+	}
+	return gpioLed;
 }
 
 // function which maps from integer to 8 bit hex for 7 segment display
@@ -182,15 +194,28 @@ void delay(uint32 n)
 int main(void) 
 {
 	uint8 i;
-
+	
 	while(1)		// loop forever
 	{	
+		/*
+		GPIO_LED = dispTempLED(0);
+		delay(4000);
+		
+		GPIO_LED = dispTempLED(1);
+		delay(4000);
+		
+		GPIO_LED = dispTempLED(2);
+		delay(4000);*/
+		
+		
+		
+		i=0;
 		// loop through the temperature LED code indefinitely
-		for(i=0;i<n;i++)
+		for(i=0;i<17;i++)
 		{
-			// display temperature code for 
-			dispTempLED(i);
-			delay(4000);
+			// display temperature code for i 
+			GPIO_LED = dispTempLED(i);
+			delay(4000000);
 		}
 
 	} // end of infinite loop
