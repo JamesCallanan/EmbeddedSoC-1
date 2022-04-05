@@ -16,6 +16,21 @@
 #define CASE_BIT						('A' ^ 'a')
 #define nLOOPS_per_DELAY		1000000
 
+// Macros for the ADXL362 accelerometer
+#define FILTER_CTL_ADDR 0x2c
+#define THRESH_ACT_L_ADDR 0x20
+#define THRESH_ACT_H_ADDR 0x21 // next to the low byte in memory
+// addresses for the acceleration-data registers
+#define XDATA_L_ADDR 0x0e
+#define XDATA_H_ADDR 0x0f
+#define YDATA_L_ADDR 0x10
+#define YDATA_H_ADDR 0x11
+#define ZDATA_L_ADDR 0x12
+#define ZDATA_L_ADDR 0x13
+// command Bytes for the accelerometer
+#define WRITE_TO_REG 0x0a // this Byte in a SPI transaction specifies a write command
+#define READ_REG 0x0b // this Bytes signifies a read is to be done
+
 #define INVERT_LEDS					(GPIO_LED ^= 0xff)
 
 #define ARRAY_SIZE(__x__)   (sizeof(__x__)/sizeof(__x__[0]))
