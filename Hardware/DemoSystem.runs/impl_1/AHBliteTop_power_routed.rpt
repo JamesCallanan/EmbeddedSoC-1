@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date             : Wed Mar 23 10:46:13 2022
+| Date             : Wed Apr 06 11:53:56 2022
 | Host             : Eleclab86 running 64-bit major release  (build 9200)
 | Command          : report_power -file AHBliteTop_power_routed.rpt -pb AHBliteTop_power_summary_routed.pb
 | Design           : AHBliteTop
@@ -49,17 +49,17 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.004 |        5 |       --- |             --- |
-| Slice Logic    |     0.003 |     5381 |       --- |             --- |
-|   LUT as Logic |     0.003 |     3234 |     63400 |            5.10 |
+| Clocks         |     0.005 |        5 |       --- |             --- |
+| Slice Logic    |     0.003 |     5573 |       --- |             --- |
+|   LUT as Logic |     0.003 |     3295 |     63400 |            5.20 |
 |   CARRY4       |    <0.001 |       59 |     15850 |            0.37 |
-|   Register     |    <0.001 |     1431 |    126800 |            1.13 |
-|   F7/F8 Muxes  |    <0.001 |       50 |     63400 |            0.08 |
-|   Others       |     0.000 |       70 |       --- |             --- |
-| Signals        |     0.006 |     5042 |       --- |             --- |
+|   Register     |    <0.001 |     1553 |    126800 |            1.22 |
+|   F7/F8 Muxes  |    <0.001 |       55 |     63400 |            0.09 |
+|   Others       |     0.000 |       71 |       --- |             --- |
+| Signals        |     0.006 |     5215 |       --- |             --- |
 | Block RAM      |     0.010 |       12 |       135 |            8.89 |
 | PLL            |     0.096 |        1 |         6 |           16.67 |
-| I/O            |     0.004 |       59 |       210 |           28.10 |
+| I/O            |     0.003 |       59 |       210 |           28.10 |
 | Static Power   |     0.098 |          |           |                 |
 | Total          |     0.221 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
@@ -187,8 +187,9 @@ Table of Contents
 |     uFIFO_TX                            |    <0.001 |
 |     uart2                               |    <0.001 |
 |   clockGen                              |     0.096 |
-|   cpu                                   |     0.011 |
-|     u_logic                             |     0.011 |
+|   cpu                                   |     0.010 |
+|     u_logic                             |     0.010 |
+|   display                               |    <0.001 |
 |   mux                                   |    <0.001 |
 |   resetGen                              |    <0.001 |
 |   statusInd                             |    <0.001 |

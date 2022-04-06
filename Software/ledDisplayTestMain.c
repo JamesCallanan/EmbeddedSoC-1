@@ -125,7 +125,7 @@ uint32 dispTempLED(uint8 number)
 }
 
 // configuration function for 7 segment display
-void 7segDispConfig()
+void segDispConfig()
 {
 	// number of digits to be enabled on display (enable all digits)
 	ENBL_DIG = 0xFF;
@@ -137,37 +137,8 @@ void 7segDispConfig()
 	CTRL_DOT = 0x00;
 }
 	
-
-
-// function to display signed number on 7 segment 
-void displayNumber(int number)
-{
-	bool sign = 0;
-	
-	if(number < 0)
-	{
-		sign = 1;
-		number = -number;
-	}
-	
-	for(i=1; i<=NUM_DIGITS; i++)
-	{
-		digitValue = number % 10;
-		rawDigit = map2segDisp(digitValue);
-		sendRaw(rawDigit,1);
-		number = number/10;
-		
-		if(i==NUM_DIGITS && sign)
-		{
-			rawDigit = map2segDisp(10);
-			sendRaw(rawDigit,1);
-		}
-	}
-	
-}
-
 // function to send raw data to raw registers in 7-segment display
-void sendRaw(uint32 raw, bool low)
+void sendRaw(uint32 raw, int low)
 {
 	if(low)
 	{
@@ -233,6 +204,36 @@ uint8 map2segDisp(uint8 digit)
 	return raw;
 }
 	
+// function to display signed number on 7 segment 
+void displayNumber(int number)
+{
+	int sign = 0;
+	int i;
+	uint8 rawDigit;
+	uint8 digitValue;
+	
+	if(number < 0)
+	{
+		sign = 1;
+		number = -number;
+	}
+	
+	for(i=1; i<=NUM_DIGITS; i++)
+	{
+		digitValue = number % 10;
+		rawDigit = map2segDisp(digitValue);
+		sendRaw(rawDigit,1);
+		number = number/10;
+		
+		if(i==NUM_DIGITS && sign==1)
+		{
+			rawDigit = map2segDisp(10);
+			sendRaw(rawDigit,1);
+		}
+	}
+	
+}
+
 	
 //////////////////////////////////////////////////////////////////
 // Software delay function
@@ -254,16 +255,26 @@ void delay(uint32 n)
 int main(void) 
 {
 	uint8 i;
+	int j;
+	
+	// configure 7 segment display
+	segDispConfig();
 	
 	while(1)		// loop forever
 	{	
-		i=0;
-		// loop through the temperature LED code indefinitely
+		/*// loop through the temperature LED code indefinitely
 		for(i=0;i<17;i++)
 		{
 			// display temperature code for i 
 			GPIO_LED = dispTempLED(i);
 			displayNumber(i);
+			delay(4000000);
+		}*/
+		
+		// loop through the temperature LED code indefinitely
+		for(j=-10;j<=10;j++)
+		{
+			displayNumber(j);
 			delay(4000000);
 		}
 

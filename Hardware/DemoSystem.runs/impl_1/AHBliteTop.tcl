@@ -52,7 +52,6 @@ set_msg_config  -id {IP_Flow 19-3664}  -suppress
 start_step write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
-  set_param xicom.use_bs_reader 1
   debug::add_scope template.lib 1
   open_checkpoint AHBliteTop_routed.dcp
   set_property webtalk.parent_dir C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/DemoSystem.cache/wt [current_project]
