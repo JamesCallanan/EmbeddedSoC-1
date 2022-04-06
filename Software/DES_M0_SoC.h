@@ -107,7 +107,7 @@ typedef struct
 	volatile uint32 hexData;
 	struct ThreeByte control;
 	
-} SEV_SEG_block
+} SEV_SEG_block;
 
 // Simple names for the GPIO registers, as used in the SoC assignment
 #define GPIO_LED  	(pt2GPIO->Out0)				// output port 0 is connected to 16 LEDs
