@@ -20,6 +20,8 @@
 
 #define ARRAY_SIZE(__x__)   (sizeof(__x__)/sizeof(__x__[0]))
 
+#define NUM_DIGITS 4 	// Number of digits enabled in 7 segment display
+
 volatile uint8  counter  = 0; // current number of char received on UART currently in RxBuf[]
 volatile uint8  BufReady = 0; // Flag to indicate if there is a sentence worth of data in RxBuf
 volatile uint8  RxBuf[BUF_SIZE];
@@ -122,6 +124,61 @@ uint32 dispTempLED(uint8 number)
 	return gpioLed;
 }
 
+// configuration function for 7 segment display
+void 7segDispConfig()
+{
+	// number of digits to be enabled on display (enable all digits)
+	ENBL_DIG = 0xFF;
+	
+	// we want all 8 digits to be in raw mode (all 0)
+	SET_MODE = 0x00;
+	
+	// we want all dots off (for now)
+	CTRL_DOT = 0x00;
+}
+	
+
+
+// function to display signed number on 7 segment 
+void displayNumber(int number)
+{
+	bool sign = 0;
+	
+	if(number < 0)
+	{
+		sign = 1;
+		number = -number;
+	}
+	
+	for(i=1; i<=NUM_DIGITS; i++)
+	{
+		digitValue = number % 10;
+		rawDigit = map2segDisp(digitValue);
+		sendRaw(rawDigit,1);
+		number = number/10;
+		
+		if(i==NUM_DIGITS && sign)
+		{
+			rawDigit = map2segDisp(10);
+			sendRaw(rawDigit,1);
+		}
+	}
+	
+}
+
+// function to send raw data to raw registers in 7-segment display
+void sendRaw(uint32 raw, bool low)
+{
+	if(low)
+	{
+		RAW_LOW = raw;
+	}
+	else
+	{
+		RAW_HIGH = raw;
+	}	
+}
+
 // function which maps from integer to 8 bit hex for 7 segment display
 uint8 map2segDisp(uint8 digit)
 {
@@ -167,6 +224,9 @@ uint8 map2segDisp(uint8 digit)
 		case 9:
 			raw = 0xF6;
 			
+		case 10:
+			raw = 0x02; // Case for minus sign
+			
 		default:
 			raw = 0x00;
 	}
@@ -197,24 +257,13 @@ int main(void)
 	
 	while(1)		// loop forever
 	{	
-		/*
-		GPIO_LED = dispTempLED(0);
-		delay(4000);
-		
-		GPIO_LED = dispTempLED(1);
-		delay(4000);
-		
-		GPIO_LED = dispTempLED(2);
-		delay(4000);*/
-		
-		
-		
 		i=0;
 		// loop through the temperature LED code indefinitely
 		for(i=0;i<17;i++)
 		{
 			// display temperature code for i 
 			GPIO_LED = dispTempLED(i);
+			displayNumber(i);
 			delay(4000000);
 		}
 

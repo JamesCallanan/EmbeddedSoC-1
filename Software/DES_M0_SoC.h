@@ -64,6 +64,13 @@ struct TwoByte		// this combines two 8-bit values
 	uint8 Hi;
 };
 
+struct ThreeByte
+{
+	uint8 first;
+	uint8 second;
+	uint8 third;
+};
+
 typedef struct 		// matches the registers in GPIO hardware
 {
 	union 					// union occupies 4 bytes in the address map
@@ -92,6 +99,16 @@ typedef struct 		// matches the registers in GPIO hardware
 	};
 } GPIO_block;
 
+// Structure for 7 segment display
+typedef struct
+{
+	volatile uint32 rawLow;
+	volatile uint32 rawHigh;
+	volatile uint32 hexData;
+	struct ThreeByte control;
+	
+} SEV_SEG_block
+
 // Simple names for the GPIO registers, as used in the SoC assignment
 #define GPIO_LED  	(pt2GPIO->Out0)				// output port 0 is connected to 16 LEDs
 #define GPIO_LED_Lo (pt2GPIO->OUT0.Lo)		// allow access to the 8 rightmost LEDs
@@ -107,6 +124,15 @@ typedef struct 		// matches the registers in GPIO hardware
 #define BTNL_MASK		(0x04)
 #define BTNC_MASK		(0x02)
 #define BTNR_MASK		(0x01)
+
+
+// Definitions of 7-segment display registers
+#define RAW_LOW		(pt27SEG->rawLow)
+#define RAW_HIGH 	(pt27SEG->rawHigh)
+#define HEX_DATA	(pt27SEG->hexData)
+#define CTRL_DOT	(pt27SEG->control.first)
+#define SET_MODE	(pt27SEG->control.second)
+#define ENBL_DIG	(pt27SEG->control.third)
 
 
 //=================================================
@@ -148,6 +174,7 @@ typedef struct {
 // Pointers to the structs above, to define the memory map
 #define pt2GPIO ((GPIO_block *)0x50000000)
 #define pt2UART ((UART_block *)0x51000000)
+#define pt27SEG	((SEV_SEG_block *) 0x52000000)
 #define pt2SysTick  ((SysTick_block *) 0xE000E010)
 #define pt2NVIC ((NVIC_block *)0xE000E100)
 
