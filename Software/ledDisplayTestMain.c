@@ -9,6 +9,7 @@
 // Version 5 - March 2022
 //------------------------------------------------------------------------------------------------------
 #include <stdio.h>
+#include <math.h>
 #include "DES_M0_SoC.h"
 
 #define BUF_SIZE						100
@@ -131,7 +132,7 @@ void segDispConfig()
 	// second byte enables digits
 	// third byte sets hex mode or raw mode
 	// 4th byte sets dots for each digit
-	CONTROL7 = 0x00ff0000;
+	CONTROL7 = 0x00ffff00;
 }
 	
 // function to send raw data to raw registers in 7-segment display
@@ -147,66 +148,14 @@ void sendRaw(uint32 raw, int low)
 	}	
 }
 
-// function which maps from integer to 8 bit hex for 7 segment display
-uint8 map2segDisp(uint8 digit)
-{
-	uint8 raw;
-	switch(digit)
-	{
-		case 0:
-			raw = 0xFA;
-			break;
-			
-		case 1:
-			raw = 0x60;
-			break;
-			
-		case 2:
-			raw = 0xDA;
-			break;
-			
-		case 3:
-			raw = 0xF2;
-			break;
-			
-		case 4:
-			raw = 0x66;
-			break;
-			
-		case 5:
-			raw = 0xB6;
-			break;
-			
-		case 6:
-			raw = 0xBE;
-			break;
-			
-		case 7:
-			raw = 0xE0;
-			break;
-			
-		case 8:
-			raw = 0xFE;
-			break;
-			
-		case 9:
-			raw = 0xF6;
-			
-		case 10:
-			raw = 0x02; // Case for minus sign
-			
-		default:
-			raw = 0x00;
-	}
-	return raw;
-}
+
 	
 // function to display signed number on 7 segment 
 void displayNumber(int number)
 {
 	int sign = 0;
 	int i;
-	uint8 rawDigit;
+	uint8 hex = 0;
 	uint8 digitValue;
 	
 	if(number < 0)
@@ -214,21 +163,16 @@ void displayNumber(int number)
 		sign = 1;
 		number = -number;
 	}
-	
-	for(i=1; i<=NUM_DIGITS; i++)
+	i=0;
+	while(number > 0)
 	{
 		digitValue = number % 10;
-		rawDigit = map2segDisp(digitValue);
-		sendRaw(rawDigit,1);
-		number = number/10;
-		
-		if(i==NUM_DIGITS && sign==1)
-		{
-			rawDigit = map2segDisp(10);
-			sendRaw(rawDigit,1);
-		}
+		hex += digitValue*(pow(16,i));
+		number /= 10;
+		i++;
 	}
-	
+	HEX_DATA = hex;
+	//HEX_DATA = 0x(number);
 }
 
 	
@@ -271,7 +215,7 @@ int main(void)
 		}*/
 		
 		// loop through the temperature LED code indefinitely
-		for(j=-10;j<=10;j++)
+		for(j=0;j<=50;j++)
 		{
 			displayNumber(j);
 			delay(4000000);
