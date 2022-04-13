@@ -29,7 +29,9 @@ module AHBliteTop (
     output aclMOSI,     // accelerometer SPI MOSI signal
     output aclSCK,      // accelerometer SPI clock signal
     output aclSSn,      // accelerometer slave select signal, active low
-    output RsTx         // serial port transmit line
+    output RsTx,         // serial port transmit line
+    // DO I NEED AN OUTPUT HERE FOR THE 7 SEG DISPLAY?
+    output [7:0] segment, digit
     );
  
   localparam  BAD_DATA = 32'hdeadbeef;
@@ -309,8 +311,8 @@ module AHBliteTop (
 			.HRDATA      (HRDATA_disp),         // read data 
 			.HREADYOUT   (HREADYOUT_disp),    // ready output
 			// LED output signals
-    		.digit		 (disp_dig_en),	    // digit enable lines, active low, 0 on right
-			.segment	 (disp_seg_en)// segment lines, active low, ABCDEFGP
+    		.digit		 (digit),	    // digit enable lines, active low, 0 on right
+			.segment	 (segment)      // segment lines, active low, ABCDEFGP
     );
 
 endmodule

@@ -127,14 +127,11 @@ uint32 dispTempLED(uint8 number)
 // configuration function for 7 segment display
 void segDispConfig()
 {
-	// number of digits to be enabled on display (enable all digits)
-	ENBL_DIG = 0xFF;
-	
-	// we want all 8 digits to be in raw mode (all 0)
-	SET_MODE = 0x00;
-	
-	// we want all dots off (for now)
-	CTRL_DOT = 0x00;
+	// first 8 bits are not used, 
+	// second byte enables digits
+	// third byte sets hex mode or raw mode
+	// 4th byte sets dots for each digit
+	CONTROL7 = 0x00ff0000;
 }
 	
 // function to send raw data to raw registers in 7-segment display
@@ -262,6 +259,8 @@ int main(void)
 	
 	while(1)		// loop forever
 	{	
+		//HEX_DATA = 0x12345678;
+		
 		/*// loop through the temperature LED code indefinitely
 		for(i=0;i<17;i++)
 		{

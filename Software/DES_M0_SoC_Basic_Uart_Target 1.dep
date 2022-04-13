@@ -1,15 +1,9 @@
 Dependencies for Project 'DES_M0_SoC_Basic_Uart', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x562D087E)(-c --cpu Cortex-M0 -D__EVAL --li -g -O0 --apcs=interwork -I C:\Keil4\ARM\RV31\INC-I C:\Keil4\ARM\CMSIS\Include-o .\temp_files\main.o --omf_browse .\temp_files\main.crf --depend .\temp_files\main.d)
-I (C:\Keil4\ARM\ARMCC\include\stdio.h)(0x51C835D4)
-I (DES_M0_SoC.h)(0x544E8F76)
-F (.\retarget.c)(0x544E761E)(-c --cpu Cortex-M0 -D__EVAL --li -g -O0 --apcs=interwork -I C:\Keil4\ARM\RV31\INC-I C:\Keil4\ARM\CMSIS\Include-o .\temp_files\retarget.o --omf_browse .\temp_files\retarget.crf --depend .\temp_files\retarget.d)
-I (C:\Keil4\ARM\ARMCC\include\stdio.h)(0x51C835D4)
-I (DES_M0_SoC.h)(0x544E8F76)
-F (.\cm0dsasm.s)(0x54436CE6)(--cpu Cortex-M0 --li --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil4\ARM\RV31\INC-I C:\Keil4\ARM\CMSIS\Include--list .\temp_files\cm0dsasm.lst --xref -o .\temp_files\cm0dsasm.o --depend .\temp_files\cm0dsasm.d)
-F (.\main-hardware-SPI.c)(0x5ABAC439)(-c --cpu Cortex-M0 -D__EVAL --li -g -O0 --apcs=interwork -I C:\Keil4\ARM\RV31\INC-I C:\Keil4\ARM\CMSIS\Include-o .\temp_files\main-hardware-spi.o --omf_browse .\temp_files\main-hardware-spi.crf --depend .\temp_files\main-hardware-spi.d)
-I (C:\Keil4\ARM\ARMCC\include\stdio.h)(0x51C835D4)
-I (DES_M0_SoC_SPI.h)(0x5456782E)
-F (.\cm0dsasm.s)(0x54436CE6)(--cpu Cortex-M0 --li --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil4\ARM\RV31\INC-I C:\Keil4\ARM\CMSIS\Include--list .\temp_files\cm0dsasm.lst --xref -o .\temp_files\cm0dsasm.o --depend .\temp_files\cm0dsasm.d)
-F (.\retarget.c)(0x544E761E)(-c --cpu Cortex-M0 -D__EVAL --li -g -O0 --apcs=interwork -I C:\Keil4\ARM\RV31\INC-I C:\Keil4\ARM\CMSIS\Include-o .\temp_files\retarget.o --omf_browse .\temp_files\retarget.crf --depend .\temp_files\retarget.d)
-I (C:\Keil4\ARM\ARMCC\include\stdio.h)(0x51C835D4)
-I (DES_M0_SoC.h)(0x544E8F76)
+F (.\main.c)(0x623AF5B8)(-c --cpu Cortex-M0 -D__EVAL --li -g -O0 --apcs=interwork -I C:\Keil4\ARM\RV31\INC-I C:\Keil4\ARM\CMSIS\Include-o .\temp_files\main.o --omf_browse .\temp_files\main.crf --depend .\temp_files\main.d)
+F (.\retarget.c)(0x623AF5B8)(-c --cpu Cortex-M0 -D__EVAL --li -g -O0 --apcs=interwork -I C:\Keil_v4\ARM\RV31\INC-I C:\Keil_v4\ARM\CMSIS\Include-o .\temp_files\retarget.o --omf_browse .\temp_files\retarget.crf --depend .\temp_files\retarget.d)
+I (C:\Keil_v4\ARM\ARMCC\include\stdio.h)(0x51C827C4)
+I (DES_M0_SoC.h)(0x6256A569)
+F (.\cm0dsasm.s)(0x623AF5B8)(--cpu Cortex-M0 --li --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v4\ARM\RV31\INC-I C:\Keil_v4\ARM\CMSIS\Include--list .\temp_files\cm0dsasm.lst --xref -o .\temp_files\cm0dsasm.o --depend .\temp_files\cm0dsasm.d)
+F (.\ledDisplayTestMain.c)(0x6256A689)(-c --cpu Cortex-M0 -D__EVAL --li -g -O0 --apcs=interwork -I C:\Keil_v4\ARM\RV31\INC-I C:\Keil_v4\ARM\CMSIS\Include-o .\temp_files\leddisplaytestmain.o --omf_browse .\temp_files\leddisplaytestmain.crf --depend .\temp_files\leddisplaytestmain.d)
+I (C:\Keil_v4\ARM\ARMCC\include\stdio.h)(0x51C827C4)
+I (DES_M0_SoC.h)(0x6256A569)

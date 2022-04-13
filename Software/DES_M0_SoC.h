@@ -64,13 +64,6 @@ struct TwoByte		// this combines two 8-bit values
 	uint8 Hi;
 };
 
-struct ThreeByte
-{
-	uint8 first;
-	uint8 second;
-	uint8 third;
-};
-
 typedef struct 		// matches the registers in GPIO hardware
 {
 	union 					// union occupies 4 bytes in the address map
@@ -105,9 +98,9 @@ typedef struct
 	volatile uint32 rawLow;
 	volatile uint32 rawHigh;
 	volatile uint32 hexData;
-	struct ThreeByte control;
+	volatile uint32 control;
 	
-} SEV_SEG_block
+} SEV_SEG_block;
 
 // Simple names for the GPIO registers, as used in the SoC assignment
 #define GPIO_LED  	(pt2GPIO->Out0)				// output port 0 is connected to 16 LEDs
@@ -130,9 +123,7 @@ typedef struct
 #define RAW_LOW		(pt27SEG->rawLow)
 #define RAW_HIGH 	(pt27SEG->rawHigh)
 #define HEX_DATA	(pt27SEG->hexData)
-#define CTRL_DOT	(pt27SEG->control.first)
-#define SET_MODE	(pt27SEG->control.second)
-#define ENBL_DIG	(pt27SEG->control.third)
+#define CONTROL7 	(pt27SEG->control)
 
 
 //=================================================

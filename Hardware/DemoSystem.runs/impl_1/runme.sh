@@ -41,7 +41,7 @@ EAStep()
 }
 
 # pre-commands:
-/bin/touch .write_bitstream.begin.rst
+/bin/touch .init_design.begin.rst
 EAStep vivado -log AHBliteTop.vdi -applog -m64 -messageDb vivado.pb -mode batch -source AHBliteTop.tcl -notrace
 
 

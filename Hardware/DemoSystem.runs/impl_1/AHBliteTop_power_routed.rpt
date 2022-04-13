@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date             : Wed Apr 06 11:53:56 2022
+| Date             : Wed Apr 13 11:00:57 2022
 | Host             : Eleclab86 running 64-bit major release  (build 9200)
 | Command          : report_power -file AHBliteTop_power_routed.rpt -pb AHBliteTop_power_summary_routed.pb
 | Design           : AHBliteTop
@@ -50,16 +50,16 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.005 |        5 |       --- |             --- |
-| Slice Logic    |     0.003 |     5573 |       --- |             --- |
-|   LUT as Logic |     0.003 |     3295 |     63400 |            5.20 |
-|   CARRY4       |    <0.001 |       59 |     15850 |            0.37 |
-|   Register     |    <0.001 |     1553 |    126800 |            1.22 |
-|   F7/F8 Muxes  |    <0.001 |       55 |     63400 |            0.09 |
-|   Others       |     0.000 |       71 |       --- |             --- |
-| Signals        |     0.006 |     5215 |       --- |             --- |
+| Slice Logic    |     0.003 |     5647 |       --- |             --- |
+|   LUT as Logic |     0.002 |     3330 |     63400 |            5.25 |
+|   CARRY4       |    <0.001 |       64 |     15850 |            0.40 |
+|   Register     |    <0.001 |     1573 |    126800 |            1.24 |
+|   F7/F8 Muxes  |    <0.001 |       69 |     63400 |            0.11 |
+|   Others       |     0.000 |       72 |       --- |             --- |
+| Signals        |     0.006 |     5253 |       --- |             --- |
 | Block RAM      |     0.010 |       12 |       135 |            8.89 |
 | PLL            |     0.096 |        1 |         6 |           16.67 |
-| I/O            |     0.003 |       59 |       210 |           28.10 |
+| I/O            |     0.003 |       75 |       210 |           35.71 |
 | Static Power   |     0.098 |          |           |                 |
 | Total          |     0.221 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
@@ -71,7 +71,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.047 |       0.031 |      0.016 |
+| Vccint    |       1.000 |     0.047 |       0.032 |      0.016 |
 | Vccaux    |       1.800 |     0.067 |       0.049 |      0.018 |
 | Vcco33    |       3.300 |     0.005 |       0.001 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -182,7 +182,7 @@ Table of Contents
 |                 prim_init.ram           |    <0.001 |
 |     loader                              |    <0.001 |
 |     uart1                               |    <0.001 |
-|   UART                                  |    <0.001 |
+|   UART                                  |     0.001 |
 |     uFIFO_RX                            |    <0.001 |
 |     uFIFO_TX                            |    <0.001 |
 |     uart2                               |    <0.001 |
