@@ -14,9 +14,13 @@ Command: synth_design -top AHBliteTop -part xc7a100tcsg324-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
-INFO: [Common 17-1223] The version limit for your license is '2019.09' and will expire in -926 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: [Common 17-1223] The version limit for your license is '2019.09' and will expire in -927 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+WARNING: [Synth 8-2611] redeclaration of ansi port MISO is not allowed [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBspi_master.v:118]
+WARNING: [Synth 8-976] MISO has already been declared [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBspi_master.v:118]
+WARNING: [Synth 8-2654] second declaration of MISO ignored [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBspi_master.v:118]
+INFO: [Synth 8-994] MISO is declared here [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBspi_master.v:17]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 240.473 ; gain = 64.293
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 250.262 ; gain = 73.852
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'AHBliteTop' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBliteTop.v:15]
 	Parameter BAD_DATA bound to: -559038737 - type: integer 
@@ -69,12 +73,13 @@ INFO: [Synth 8-256] done synthesizing module 'reset_gen' (5#1) [C:/Users/lab/Doc
 INFO: [Synth 8-638] synthesizing module 'status_ind' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/status_ind.v:20]
 	Parameter BRIGHTNESS bound to: 3'b100 
 INFO: [Synth 8-256] done synthesizing module 'status_ind' (6#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/status_ind.v:20]
-INFO: [Synth 8-638] synthesizing module 'CORTEXM0DS' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/DemoSystem.runs/synth_1/.Xil/Vivado-2764-Eleclab86/realtime/CORTEXM0DS_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'CORTEXM0DS' (7#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/DemoSystem.runs/synth_1/.Xil/Vivado-2764-Eleclab86/realtime/CORTEXM0DS_stub.v:6]
+INFO: [Synth 8-638] synthesizing module 'CORTEXM0DS' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/DemoSystem.runs/synth_1/.Xil/Vivado-8560-Eleclab86/realtime/CORTEXM0DS_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'CORTEXM0DS' (7#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/DemoSystem.runs/synth_1/.Xil/Vivado-8560-Eleclab86/realtime/CORTEXM0DS_stub.v:6]
 INFO: [Synth 8-638] synthesizing module 'AHBDCD' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBDCD.v:39]
 INFO: [Synth 8-256] done synthesizing module 'AHBDCD' (8#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBDCD.v:39]
 INFO: [Synth 8-638] synthesizing module 'AHBMUX' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBMUX.v:39]
 INFO: [Synth 8-256] done synthesizing module 'AHBMUX' (9#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBMUX.v:39]
+WARNING: [Synth 8-689] width (1) of port connection 'HRDATA_S5' does not match port width (32) of module 'AHBMUX' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBliteTop.v:195]
 INFO: [Synth 8-638] synthesizing module 'AHBrom' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBrom.v:17]
 	Parameter ADDR_WIDTH bound to: 15 - type: integer 
 INFO: [Synth 8-638] synthesizing module 'uart_RXonly' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/uart_RXonly.v:19]
@@ -96,13 +101,13 @@ INFO: [Synth 8-638] synthesizing module 'ram_loader' [C:/Users/lab/Documents/Emb
 	Parameter OTHER bound to: 2'b11 
 INFO: [Synth 8-226] default block is never used [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/ram_loader.v:76]
 INFO: [Synth 8-256] done synthesizing module 'ram_loader' (11#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/ram_loader.v:19]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_8Kword' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/DemoSystem.runs/synth_1/.Xil/Vivado-2764-Eleclab86/realtime/blk_mem_8Kword_stub.v:7]
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_8Kword' (12#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/DemoSystem.runs/synth_1/.Xil/Vivado-2764-Eleclab86/realtime/blk_mem_8Kword_stub.v:7]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_8Kword' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/DemoSystem.runs/synth_1/.Xil/Vivado-8560-Eleclab86/realtime/blk_mem_8Kword_stub.v:7]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_8Kword' (12#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/DemoSystem.runs/synth_1/.Xil/Vivado-8560-Eleclab86/realtime/blk_mem_8Kword_stub.v:7]
 INFO: [Synth 8-256] done synthesizing module 'AHBrom' (13#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBrom.v:17]
 INFO: [Synth 8-638] synthesizing module 'AHBram' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBram.v:17]
 	Parameter ADDR_WIDTH bound to: 14 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'blk_mem_4Kword' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/DemoSystem.runs/synth_1/.Xil/Vivado-2764-Eleclab86/realtime/blk_mem_4Kword_stub.v:7]
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_4Kword' (14#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/DemoSystem.runs/synth_1/.Xil/Vivado-2764-Eleclab86/realtime/blk_mem_4Kword_stub.v:7]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_4Kword' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/DemoSystem.runs/synth_1/.Xil/Vivado-8560-Eleclab86/realtime/blk_mem_4Kword_stub.v:7]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_4Kword' (14#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/DemoSystem.runs/synth_1/.Xil/Vivado-8560-Eleclab86/realtime/blk_mem_4Kword_stub.v:7]
 INFO: [Synth 8-256] done synthesizing module 'AHBram' (15#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBram.v:17]
 INFO: [Synth 8-638] synthesizing module 'AHBgpio' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBgpio.v:20]
 INFO: [Synth 8-256] done synthesizing module 'AHBgpio' (16#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBgpio.v:20]
@@ -128,7 +133,11 @@ INFO: [Synth 8-638] synthesizing module 'AHBdisplay' [C:/Users/lab/Documents/Emb
 INFO: [Synth 8-638] synthesizing module 'hex2seg' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/hex2seg.v:22]
 INFO: [Synth 8-256] done synthesizing module 'hex2seg' (20#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/hex2seg.v:22]
 INFO: [Synth 8-256] done synthesizing module 'AHBdisplay' (21#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBdisplay.v:30]
-INFO: [Synth 8-256] done synthesizing module 'AHBliteTop' (22#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBliteTop.v:15]
+INFO: [Synth 8-638] synthesizing module 'AHBspi_master' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBspi_master.v:3]
+INFO: [Synth 8-256] done synthesizing module 'AHBspi_master' (22#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBspi_master.v:3]
+WARNING: [Synth 8-689] width (1) of port connection 'HRDATA' does not match port width (32) of module 'AHBspi_master' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBliteTop.v:331]
+WARNING: [Synth 8-3848] Net MISO in module/entity AHBliteTop does not have driver. [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBliteTop.v:336]
+INFO: [Synth 8-256] done synthesizing module 'AHBliteTop' (23#1) [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBliteTop.v:15]
 WARNING: [Synth 8-3917] design AHBliteTop has port JA[7] driven by constant 0
 WARNING: [Synth 8-3917] design AHBliteTop has port JA[6] driven by constant 0
 WARNING: [Synth 8-3917] design AHBliteTop has port JA[3] driven by constant 1
@@ -138,7 +147,7 @@ WARNING: [Synth 8-3917] design AHBliteTop has port aclMOSI driven by constant 0
 WARNING: [Synth 8-3917] design AHBliteTop has port aclSCK driven by constant 0
 WARNING: [Synth 8-3917] design AHBliteTop has port aclSSn driven by constant 1
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 274.703 ; gain = 98.523
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 273.133 ; gain = 96.723
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -147,8 +156,9 @@ Report Check Netlist:
 +------+------------------+-------+---------+-------+------------------+
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
+WARNING: [Synth 8-3295] tying undriven pin SPI:MISO to constant 0 [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBliteTop.v:320]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 274.703 ; gain = 98.523
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 273.133 ; gain = 96.723
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -165,22 +175,22 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Timing 38-2] Deriving generated clocks
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 587.855 ; gain = 0.039
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.157 . Memory (MB): peak = 588.625 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 587.855 ; gain = 411.676
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 588.625 ; gain = 412.215
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 587.855 ; gain = 411.676
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 588.625 ; gain = 412.215
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 587.855 ; gain = 411.676
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:15 . Memory (MB): peak = 588.625 ; gain = 412.215
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "dec" won't be mapped to RAM because it is too sparse
 ROM size is below threshold of ROM address width. It will be mapped to LUTs
@@ -212,7 +222,7 @@ INFO: [Synth 8-5544] ROM "array_reg_reg[2]" won't be mapped to Block RAM because
 INFO: [Synth 8-5544] ROM "array_reg_reg[1]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "array_reg_reg[0]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 587.855 ; gain = 411.676
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:15 . Memory (MB): peak = 588.625 ; gain = 412.215
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -226,6 +236,7 @@ Start RTL Component Statistics
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     21 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 1     
 	   2 Input      7 Bit       Adders := 2     
 	   2 Input      4 Bit       Adders := 11    
 	   2 Input      3 Bit       Adders := 1     
@@ -236,34 +247,34 @@ Detailed RTL Component Info :
 	               16 Bit    Registers := 4     
 	               14 Bit    Registers := 1     
 	                9 Bit    Registers := 2     
-	                8 Bit    Registers := 39    
+	                8 Bit    Registers := 44    
 	                7 Bit    Registers := 2     
 	                5 Bit    Registers := 1     
 	                4 Bit    Registers := 19    
 	                3 Bit    Registers := 2     
-	                2 Bit    Registers := 9     
-	                1 Bit    Registers := 11    
+	                2 Bit    Registers := 10    
+	                1 Bit    Registers := 15    
 +---Muxes : 
 	   4 Input     32 Bit        Muxes := 1     
-	   6 Input     16 Bit        Muxes := 1     
+	   7 Input     16 Bit        Muxes := 1     
 	   2 Input     16 Bit        Muxes := 2     
 	   4 Input     16 Bit        Muxes := 1     
 	   2 Input      8 Bit        Muxes := 4     
-	   4 Input      8 Bit        Muxes := 1     
-	   8 Input      8 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 2     
+	   8 Input      8 Bit        Muxes := 2     
 	   3 Input      8 Bit        Muxes := 1     
 	  16 Input      7 Bit        Muxes := 1     
-	   6 Input      4 Bit        Muxes := 1     
+	   7 Input      4 Bit        Muxes := 1     
 	   2 Input      4 Bit        Muxes := 6     
 	   5 Input      4 Bit        Muxes := 1     
 	   8 Input      4 Bit        Muxes := 1     
-	   6 Input      3 Bit        Muxes := 2     
+	   7 Input      3 Bit        Muxes := 2     
 	   2 Input      3 Bit        Muxes := 1     
 	   6 Input      2 Bit        Muxes := 3     
 	   2 Input      2 Bit        Muxes := 5     
 	   5 Input      2 Bit        Muxes := 2     
 	   8 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 44    
+	   2 Input      1 Bit        Muxes := 45    
 	   4 Input      1 Bit        Muxes := 24    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -283,11 +294,11 @@ Detailed RTL Component Info :
 Module AHBDCD 
 Detailed RTL Component Info : 
 +---Muxes : 
-	   6 Input     16 Bit        Muxes := 1     
+	   7 Input     16 Bit        Muxes := 1     
 	   2 Input     16 Bit        Muxes := 1     
-	   6 Input      4 Bit        Muxes := 1     
+	   7 Input      4 Bit        Muxes := 1     
 	   2 Input      4 Bit        Muxes := 1     
-	   6 Input      3 Bit        Muxes := 2     
+	   7 Input      3 Bit        Muxes := 2     
 Module AHBMUX 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -402,6 +413,18 @@ Detailed RTL Component Info :
 	   3 Input      8 Bit        Muxes := 1     
 	   8 Input      2 Bit        Muxes := 1     
 	   4 Input      1 Bit        Muxes := 4     
+Module AHBspi_master 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 5     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   8 Input      8 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -414,11 +437,13 @@ BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 587.855 ; gain = 411.676
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:11 ; elapsed = 00:00:15 . Memory (MB): peak = 588.625 ; gain = 412.215
 ---------------------------------------------------------------------------------
 Start Cross Boundary Optimization
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-4471] merging register 'display/rHADDR_reg[1:0]' into 'UART/rHADDR_reg[1:0]' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBdisplay.v:63]
+INFO: [Synth 8-4471] merging register 'SPI/rHADDR_reg[1:0]' into 'UART/rHADDR_reg[1:0]' [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBspi_master.v:29]
+WARNING: [Synth 8-3936] Found unconnected internal register 'SPI/READ_DATA_reg' and it is trimmed from '8' to '1' bits. [C:/Users/lab/Documents/EmbeddedSystems/Wednesday/DES_SoC/DES_SoC/Hardware/Design/AHBspi_master.v:107]
 INFO: [Synth 8-5546] ROM "decode/dec" won't be mapped to RAM because it is too sparse
 ROM size is below threshold of ROM address width. It will be mapped to LUTs
 WARNING: [Synth 8-3917] design AHBliteTop has port rgbLED[4] driven by constant 0
@@ -432,9 +457,9 @@ WARNING: [Synth 8-3917] design AHBliteTop has port aclMOSI driven by constant 0
 WARNING: [Synth 8-3917] design AHBliteTop has port aclSCK driven by constant 0
 WARNING: [Synth 8-3917] design AHBliteTop has port aclSSn driven by constant 1
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 587.855 ; gain = 411.676
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:16 . Memory (MB): peak = 588.625 ; gain = 412.215
 ---------------------------------------------------------------------------------
-Finished Parallel Reinference  : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 587.855 ; gain = 411.676
+Finished Parallel Reinference  : Time (s): cpu = 00:00:12 ; elapsed = 00:00:16 . Memory (MB): peak = 588.625 ; gain = 412.215
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -463,6 +488,28 @@ WARNING: [Synth 8-3332] Sequential element (\GPIO/in1B_reg[8] ) is unused and wi
 WARNING: [Synth 8-3332] Sequential element (\GPIO/in1B_reg[7] ) is unused and will be removed from module AHBliteTop.
 WARNING: [Synth 8-3332] Sequential element (\GPIO/in1B_reg[6] ) is unused and will be removed from module AHBliteTop.
 WARNING: [Synth 8-3332] Sequential element (\GPIO/in1B_reg[5] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/STATUS_reg ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/SPICON_reg[7] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/SPICON_reg[6] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/SPICON_reg[5] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/SPICON_reg[4] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/SPICON_reg[3] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/SPICON_reg[2] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/SPICON_reg[1] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/RX_DATA_reg[7] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/RX_DATA_reg[6] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/RX_DATA_reg[5] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/RX_DATA_reg[4] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/RX_DATA_reg[3] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/RX_DATA_reg[2] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/RX_DATA_reg[1] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/TX_DATA_reg[7] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/TX_DATA_reg[6] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/TX_DATA_reg[5] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/TX_DATA_reg[4] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/TX_DATA_reg[3] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/TX_DATA_reg[2] ) is unused and will be removed from module AHBliteTop.
+WARNING: [Synth 8-3332] Sequential element (\SPI/TX_DATA_reg[1] ) is unused and will be removed from module AHBliteTop.
 WARNING: [Synth 8-3332] Sequential element (\UART/rHADDR_reg[0] ) is unused and will be removed from module AHBliteTop.
 WARNING: [Synth 8-3332] Sequential element (\RAM/rHADDR_reg[2] ) is unused and will be removed from module AHBliteTop.
 WARNING: [Synth 8-3332] Sequential element (\UART/rHADDR_reg[1] ) is unused and will be removed from module AHBliteTop.
@@ -477,16 +524,16 @@ WARNING: [Synth 8-3332] Sequential element (\GPIO/in1B_reg[15] ) is unused and w
 Start Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 587.855 ; gain = 411.676
+Finished Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:18 . Memory (MB): peak = 588.625 ; gain = 412.215
 ---------------------------------------------------------------------------------
-Finished Parallel Area Optimization  : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 587.855 ; gain = 411.676
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:13 ; elapsed = 00:00:18 . Memory (MB): peak = 588.625 ; gain = 412.215
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 587.855 ; gain = 411.676
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:13 ; elapsed = 00:00:18 . Memory (MB): peak = 588.625 ; gain = 412.215
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
@@ -494,10 +541,10 @@ Start Timing Optimization
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 587.855 ; gain = 411.676
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 588.625 ; gain = 412.215
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 587.855 ; gain = 411.676
+Finished Timing Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 588.625 ; gain = 412.215
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -508,8 +555,9 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
+WARNING: [Synth 8-3332] Sequential element (\SPI/RX_DATA_reg[0] ) is unused and will be removed from module AHBliteTop.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 591.766 ; gain = 415.586
+Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:28 . Memory (MB): peak = 590.555 ; gain = 414.145
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -527,7 +575,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 591.766 ; gain = 415.586
+Finished IO Insertion : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 590.555 ; gain = 414.145
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -540,7 +588,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 591.766 ; gain = 415.586
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 590.555 ; gain = 414.145
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -552,13 +600,13 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 591.766 ; gain = 415.586
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 590.555 ; gain = 414.145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Start Renaming Generated Ports : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 591.766 ; gain = 415.586
+Start Renaming Generated Ports : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 590.555 ; gain = 414.145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 591.766 ; gain = 415.586
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 590.555 ; gain = 414.145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -582,48 +630,49 @@ Report Cell Usage:
 |3     |blk_mem_8Kword |     1|
 |4     |BUFG           |     2|
 |5     |CARRY4         |    24|
-|6     |LUT1           |    98|
-|7     |LUT2           |    27|
-|8     |LUT3           |    48|
-|9     |LUT4           |    32|
-|10    |LUT5           |    99|
-|11    |LUT6           |   250|
-|12    |MUXF7          |    52|
-|13    |MUXF8          |    12|
+|6     |LUT1           |    99|
+|7     |LUT2           |    32|
+|8     |LUT3           |    61|
+|9     |LUT4           |    45|
+|10    |LUT5           |    92|
+|11    |LUT6           |   254|
+|12    |MUXF7          |    39|
+|13    |MUXF8          |    16|
 |14    |PLLE2_ADV      |     1|
 |15    |FDCE           |    19|
-|16    |FDRE           |   722|
-|17    |FDSE           |     6|
+|16    |FDRE           |   734|
+|17    |FDSE           |     7|
 |18    |IBUF           |    25|
 |19    |OBUF           |    50|
 +------+---------------+------+
 
 Report Instance Areas: 
-+------+-------------+------------+------+
-|      |Instance     |Module      |Cells |
-+------+-------------+------------+------+
-|1     |top          |            |  1613|
-|2     |  GPIO       |AHBgpio     |   130|
-|3     |  RAM        |AHBram      |   122|
-|4     |  ROM        |AHBrom      |   250|
-|5     |    loader   |ram_loader  |   115|
-|6     |    uart1    |uart_RXonly |   103|
-|7     |  UART       |AHBuart     |   589|
-|8     |    uFIFO_RX |FIFO        |   227|
-|9     |    uFIFO_TX |FIFO_0      |   233|
-|10    |    uart2    |uart        |   120|
-|11    |  clockGen   |clock_gen   |     5|
-|12    |  display    |AHBdisplay  |   260|
-|13    |  mux        |AHBMUX      |    58|
-|14    |  resetGen   |reset_gen   |     7|
-|15    |  statusInd  |status_ind  |    36|
-+------+-------------+------------+------+
++------+-------------+--------------+------+
+|      |Instance     |Module        |Cells |
++------+-------------+--------------+------+
+|1     |top          |              |  1646|
+|2     |  GPIO       |AHBgpio       |   121|
+|3     |  RAM        |AHBram        |   121|
+|4     |  ROM        |AHBrom        |   248|
+|5     |    loader   |ram_loader    |   113|
+|6     |    uart1    |uart_RXonly   |   103|
+|7     |  SPI        |AHBspi_master |    27|
+|8     |  UART       |AHBuart       |   596|
+|9     |    uFIFO_RX |FIFO          |   233|
+|10    |    uFIFO_TX |FIFO_0        |   236|
+|11    |    uart2    |uart          |   119|
+|12    |  clockGen   |clock_gen     |     5|
+|13    |  display    |AHBdisplay    |   259|
+|14    |  mux        |AHBMUX        |    68|
+|15    |  resetGen   |reset_gen     |    10|
+|16    |  statusInd  |status_ind    |    35|
++------+-------------+--------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 591.766 ; gain = 415.586
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 590.555 ; gain = 414.145
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 40 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:00:20 . Memory (MB): peak = 591.766 ; gain = 80.512
-Synthesis Optimization Complete : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 591.766 ; gain = 415.586
+Synthesis finished with 0 errors, 0 critical warnings and 64 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 590.555 ; gain = 76.633
+Synthesis Optimization Complete : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 590.555 ; gain = 414.145
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 50 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -633,8 +682,8 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-91 Infos, 48 Warnings, 0 Critical Warnings and 0 Errors encountered.
+95 Infos, 79 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 591.766 ; gain = 397.305
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.046 . Memory (MB): peak = 591.766 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Wed Apr 13 10:59:34 2022...
+synth_design: Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 590.555 ; gain = 396.523
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.062 . Memory (MB): peak = 590.555 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 14 13:20:58 2022...

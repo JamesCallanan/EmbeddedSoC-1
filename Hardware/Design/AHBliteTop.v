@@ -170,7 +170,7 @@ module AHBliteTop (
         .HSEL_S2    (HSEL_gpio),
         .HSEL_S3    (HSEL_uart),
         .HSEL_S4    (HSEL_disp),
-        .HSEL_S5    (),
+        .HSEL_S5    (HSEL_spi),
         .HSEL_S6    (),
         .HSEL_S7    (),
         .HSEL_S8    (),
@@ -192,7 +192,7 @@ module AHBliteTop (
         .HRDATA_S2      (HRDATA_gpio),
         .HRDATA_S3      (HRDATA_uart),
         .HRDATA_S4      (HRDATA_disp),
-        .HRDATA_S5      (BAD_DATA),
+        .HRDATA_S5      (HRDATA_spi),
         .HRDATA_S6      (BAD_DATA),
         .HRDATA_S7      (BAD_DATA),
         .HRDATA_S8      (BAD_DATA),
@@ -205,7 +205,7 @@ module AHBliteTop (
         .HREADYOUT_S2   (HREADYOUT_gpio),
         .HREADYOUT_S3   (HREADYOUT_uart),             
         .HREADYOUT_S4   (HREADYOUT_disp),                 
-        .HREADYOUT_S5   (1'b1),					// unused inputs tied to 1
+        .HREADYOUT_S5   (1'b1),					// unused inputs tied to 1 // COME BACK TO THIS 
         .HREADYOUT_S6   (1'b1),
         .HREADYOUT_S7   (1'b1),
         .HREADYOUT_S8   (1'b1),
@@ -313,6 +313,28 @@ module AHBliteTop (
 			// LED output signals
     		.digit		 (digit),	    // digit enable lines, active low, 0 on right
 			.segment	 (segment)      // segment lines, active low, ABCDEFGP
+    );
+    
+    // ======================= Display block ======================================
+    
+    AHBspi_master SPI(
+            // Bus signals
+            .HCLK        (HCLK),            // bus clock
+            .HRESETn     (HRESETn),            // bus reset, active low
+            .HSEL        (HSEL_spi),        // selects this slave
+            .HREADY      (HREADY),           // indicates previous transaction completing
+            .HADDR       (HADDR),            // address
+            .HTRANS      (HTRANS),           // transaction type (only bit 1 used)
+            .HWRITE      (HWRITE),            // write transaction
+            //.HSIZE       (HSIZE),            // transaction width (max 32-bit supported)
+            .HWDATA      (HWDATA),           // write data
+            .HRDATA      (HRDATA_spi),         // read data 
+            //.HREADYOUT   (HREADYOUT_spi),    // ready output
+            // SPI specific wires
+            .MOSI        (MOSI),           // to slaves
+            .SCLK        (SCLK),           // to slaves
+            .MISO        (MISO),            // from selected slave
+            .ACCELEROMETER_SELECT_N     (ACCELEROMETER_SELECT_N)   // to accelerometer slave    
     );
 
 endmodule

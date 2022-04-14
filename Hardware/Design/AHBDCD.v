@@ -91,11 +91,19 @@ always @ (HADDR)
           dec = 16'b0000_0000_00001000;  // one-hot code for slave select
           MUX_SEL = 4'd3;                // 4-bit slave number for multiplexer
         end
-		
+	
+	// display	
 	8'h52: 				// Address range 0x5200_0000 to 0x52FF_FFFF  16MB
         begin
           dec = 16'b0000_0000_00010000;  // one-hot code for slave select
           MUX_SEL = 4'd4;                // 4-bit slave number for multiplexer
+        end
+    
+    // spi master    
+    8'h53: 				// Address range 0x5300_0000 to 0x53FF_FFFF  16MB
+        begin
+          dec = 16'b0000_0000_00100000;  // one-hot code for slave select
+          MUX_SEL = 4'd5;                // 4-bit slave number for multiplexer
         end
                 // Add more cases here if there are more slaves
 

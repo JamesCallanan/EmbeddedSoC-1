@@ -953,6 +953,26 @@ typedef struct
 } GPIO_block;
 
 
+typedef struct 		
+{
+	union 					
+	{
+		volatile uint8 spi_ctrl; 		
+		volatile uint32  reserved0;		
+	};
+	union 
+	{
+		volatile uint8 spi_tx_data; 		
+		volatile uint32  reserved1;		
+	};
+	union 
+	{
+		volatile uint8 spi_rx_data; 		
+		volatile uint32  reserved2;		
+	};
+} SPI_block;
+
+
 typedef struct
 {
 	volatile uint32 rawLow;
@@ -963,7 +983,11 @@ typedef struct
 } SEV_SEG_block;
 
 
-#line 113 "DES_M0_SoC.h"
+#line 133 "DES_M0_SoC.h"
+
+
+
+
 
 
 
@@ -1017,11 +1041,7 @@ typedef struct {
 
 
 
-
-
-
-
-
+#line 196 "DES_M0_SoC.h"
 
 
 #line 8 "retarget.c"

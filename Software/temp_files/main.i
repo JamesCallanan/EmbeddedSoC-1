@@ -958,7 +958,48 @@ typedef struct
 } GPIO_block;
 
 
-#line 103 "DES_M0_SoC.h"
+typedef struct 		
+{
+	union 					
+	{
+		volatile uint8 spi_ctrl; 		
+		volatile uint32  reserved0;		
+	};
+	union 
+	{
+		volatile uint8 spi_tx_data; 		
+		volatile uint32  reserved1;		
+	};
+	union 
+	{
+		volatile uint8 spi_rx_data; 		
+		volatile uint32  reserved2;		
+	};
+} SPI_block;
+
+
+typedef struct
+{
+	volatile uint32 rawLow;
+	volatile uint32 rawHigh;
+	volatile uint32 hexData;
+	volatile uint32 control;
+	
+} SEV_SEG_block;
+
+
+#line 133 "DES_M0_SoC.h"
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1005,10 +1046,7 @@ typedef struct {
 
 
 
-
-
-
-
+#line 196 "DES_M0_SoC.h"
 
 
 #line 13 "main.c"

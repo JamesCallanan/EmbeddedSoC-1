@@ -92,6 +92,26 @@ typedef struct 		// matches the registers in GPIO hardware
 	};
 } GPIO_block;
 
+// spi block structure
+typedef struct 		// matches the registers in GPIO hardware
+{
+	union 					// union occupies 4 bytes in the address map
+	{
+		volatile uint8 spi_ctrl; 		// control byte for spi con
+		volatile uint32  reserved0;		// overlapping 4-byte value
+	};
+	union 
+	{
+		volatile uint8 spi_tx_data; 		// control byte for spi con
+		volatile uint32  reserved1;		// overlapping 4-byte value
+	};
+	union 
+	{
+		volatile uint8 spi_rx_data; 		// control byte for spi con
+		volatile uint32  reserved2;		// overlapping 4-byte value
+	};
+} SPI_block;
+
 // Structure for 7 segment display
 typedef struct
 {
@@ -125,6 +145,10 @@ typedef struct
 #define HEX_DATA	(pt27SEG->hexData)
 #define CONTROL7 	(pt27SEG->control)
 
+// Definitions of spi master registers
+#define SPI_CTRL	(pt2SPI->spi_ctrl)
+#define SPI_TX_DATA	(pt2SPI->spi_tx_data)
+#define SPI_RX_DATA	(pt2SPI->spi_rx_data)
 
 //=================================================
 // Struct for some of the SysTick timer registers
@@ -166,6 +190,7 @@ typedef struct {
 #define pt2GPIO ((GPIO_block *)0x50000000)
 #define pt2UART ((UART_block *)0x51000000)
 #define pt27SEG	((SEV_SEG_block *) 0x52000000)
+#define pt2SPI	((SPI_block *) 0x53000000)
 #define pt2SysTick  ((SysTick_block *) 0xE000E010)
 #define pt2NVIC ((NVIC_block *)0xE000E100)
 
