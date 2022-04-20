@@ -3,6 +3,7 @@
 # 
 
 debug::add_scope template.lib 1
+set_msg_config -id {Common-41} -limit 4294967295
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
 set_msg_config  -id {Synth 8-312}  -suppress 
