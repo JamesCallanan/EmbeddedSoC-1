@@ -1694,6 +1694,26 @@ typedef struct
 } GPIO_block;
 
 
+typedef struct 		
+{
+	union 					
+	{
+		volatile uint8 spi_ctrl; 		
+		volatile uint32  reserved0;		
+	};
+	union 
+	{
+		volatile uint8 spi_tx_data; 		
+		volatile uint32  reserved1;		
+	};
+	union 
+	{
+		volatile uint8 spi_rx_data; 		
+		volatile uint32  reserved2;		
+	};
+} SPI_block;
+
+
 typedef struct
 {
 	volatile uint32 rawLow;
@@ -1704,7 +1724,11 @@ typedef struct
 } SEV_SEG_block;
 
 
-#line 113 "DES_M0_SoC.h"
+#line 133 "DES_M0_SoC.h"
+
+
+
+
 
 
 
@@ -1758,11 +1782,7 @@ typedef struct {
 
 
 
-
-
-
-
-
+#line 196 "DES_M0_SoC.h"
 
 
 #line 14 "ledDisplayTestMain.c"
@@ -1887,7 +1907,9 @@ void segDispConfig()
 	
 	
 	
-	(((SEV_SEG_block *) 0x52000000)->control) = 0x00ffff00;
+	(((SEV_SEG_block *) 0x52000000)->control) = 0x00ff7700;
+
+
 }
 	
 
@@ -1908,26 +1930,30 @@ void sendRaw(uint32 raw, int low)
 
 void displayNumber(int number)
 {
-	int sign = 0;
 	int i;
-	uint8 hex = 0;
+	uint16 hex = 0;
 	uint8 digitValue;
 	
 	if(number < 0)
 	{
-		sign = 1;
+		
+		sendRaw(0x02000000,1);
 		number = -number;
+	}
+	else
+	{
+		
+		sendRaw(0xfc000000,1);
 	}
 	i=0;
 	while(number > 0)
 	{
 		digitValue = number % 10;
-		hex += digitValue*(pow(16,i));
+		hex += digitValue<<(4*i);
 		number /= 10;
 		i++;
 	}
 	(((SEV_SEG_block *) 0x52000000)->hexData) = hex;
-	
 }
 
 	
@@ -1950,7 +1976,6 @@ void delay(uint32 n)
 
 int main(void) 
 {
-	uint8 i;
 	int j;
 	
 	
@@ -1960,21 +1985,14 @@ int main(void)
 	{	
 		
 		
-		
-
-
-
-
-
-
- 
-		
-		
-		for(j=0;j<=50;j++)
+		for(j=-111;j<=111;j++)
 		{
 			displayNumber(j);
 			delay(4000000);
 		}
+	
+
+
 
 	} 
 

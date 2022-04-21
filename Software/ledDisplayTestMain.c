@@ -132,7 +132,9 @@ void segDispConfig()
 	// second byte enables digits
 	// third byte sets hex mode or raw mode
 	// 4th byte sets dots for each digit
-	CONTROL7 = 0x00ffff00;
+	CONTROL7 = 0x00ff7700;
+//	CONTROL7 = 0x00ffff00;
+//	CONTROL7 = 0xffffffff;
 }
 	
 // function to send raw data to raw registers in 7-segment display
@@ -153,26 +155,30 @@ void sendRaw(uint32 raw, int low)
 // function to display signed number on 7 segment 
 void displayNumber(int number)
 {
-	int sign = 0;
 	int i;
-	uint8 hex = 0;
+	uint16 hex = 0;
 	uint8 digitValue;
 	
 	if(number < 0)
 	{
-		sign = 1;
+		// send a dash to the fourth digit from the left
+		sendRaw(0x02000000,1);
 		number = -number;
+	}
+	else
+	{
+		// display 0 on the fourth digit from the left
+		sendRaw(0xfc000000,1);
 	}
 	i=0;
 	while(number > 0)
 	{
 		digitValue = number % 10;
-		hex += digitValue*(pow(16,i));
+		hex += digitValue<<(4*i);
 		number /= 10;
 		i++;
 	}
 	HEX_DATA = hex;
-	//HEX_DATA = 0x(number);
 }
 
 	
@@ -195,7 +201,6 @@ void delay(uint32 n)
 //////////////////////////////////////////////////////////////////
 int main(void) 
 {
-	uint8 i;
 	int j;
 	
 	// configure 7 segment display
@@ -203,23 +208,16 @@ int main(void)
 	
 	while(1)		// loop forever
 	{	
-		//HEX_DATA = 0x12345678;
-		
-		/*// loop through the temperature LED code indefinitely
-		for(i=0;i<17;i++)
-		{
-			// display temperature code for i 
-			GPIO_LED = dispTempLED(i);
-			displayNumber(i);
-			delay(4000000);
-		}*/
 		
 		// loop through the temperature LED code indefinitely
-		for(j=0;j<=50;j++)
+		for(j=-111;j<=111;j++)
 		{
 			displayNumber(j);
 			delay(4000000);
 		}
+	
+//	//HEX_DATA = 0x111;		
+//	displayNumber(111);
 
 	} // end of infinite loop
 

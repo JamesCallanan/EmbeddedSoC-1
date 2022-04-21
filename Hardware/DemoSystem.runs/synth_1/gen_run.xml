@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1650456675">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1650548201">
   <File Type="RDS-DCP" Name="AHBliteTop.dcp"/>
   <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/synth_1/constrs_in.xml"/>
   <File Type="RDS-UTIL-PB" Name="AHBliteTop_utilization_synth.pb"/>

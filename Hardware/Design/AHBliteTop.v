@@ -58,10 +58,10 @@ module AHBliteTop (
     
 // ========================= Signals to-from individual slaves ==================
 // Slave select signals (one per slave)
-    wire        HSEL_rom, HSEL_ram, HSEL_gpio, HSEL_uart, HSEL_disp; 
+    wire        HSEL_rom, HSEL_ram, HSEL_gpio, HSEL_uart, HSEL_disp, HSEL_spi; 
 // Slave output signals (one per slave)
-    wire [31:0] HRDATA_rom, HRDATA_ram, HRDATA_gpio, HRDATA_uart, HRDATA_disp;     // read data from slave
-    wire        HREADYOUT_rom, HREADYOUT_ram, HREADYOUT_gpio, HREADYOUT_uart, HREADYOUT_disp;   // ready output from slave
+    wire [31:0] HRDATA_rom, HRDATA_ram, HRDATA_gpio, HRDATA_uart, HRDATA_disp, HRDATA_spi;     // read data from slave
+    wire        HREADYOUT_rom, HREADYOUT_ram, HREADYOUT_gpio, HREADYOUT_uart, HREADYOUT_disp, HREADYOUT_spi;   // ready output from slave
  
  //
 
@@ -77,11 +77,6 @@ module AHBliteTop (
     wire [11:0] led_rom;        // status output from ROM loader
     wire [15:0] led_gpio;       // led output from GPIO block
     assign led = ROMload ? {4'b0,led_rom} : led_gpio;    // choose which to display
-    
-// Temporary connections to the accelerometer signals, to avoid warnings in synthesis
-    assign aclSCK = 1'b0;
-    assign aclMOSI = 1'b0;
-    assign aclSSn = 1'b1;   // do not select the accelerometer
 
 // Define Cortex-M0 DesignStart processor signals (not part of AHB-Lite)
     wire 		RXEV, TXEV;  // event signals
@@ -205,7 +200,7 @@ module AHBliteTop (
         .HREADYOUT_S2   (HREADYOUT_gpio),
         .HREADYOUT_S3   (HREADYOUT_uart),             
         .HREADYOUT_S4   (HREADYOUT_disp),                 
-        .HREADYOUT_S5   (1'b1),					// unused inputs tied to 1 // COME BACK TO THIS 
+        .HREADYOUT_S5   (HREADYOUT_spi),					// unused inputs tied to 1 // COME BACK TO THIS 
         .HREADYOUT_S6   (1'b1),
         .HREADYOUT_S7   (1'b1),
         .HREADYOUT_S8   (1'b1),
@@ -329,12 +324,12 @@ module AHBliteTop (
             //.HSIZE       (HSIZE),            // transaction width (max 32-bit supported)
             .HWDATA      (HWDATA),           // write data
             .HRDATA      (HRDATA_spi),         // read data 
-            //.HREADYOUT   (HREADYOUT_spi),    // ready output
+            .HREADYOUT   (HREADYOUT_spi),    // ready output
             // SPI specific wires
-            .MOSI        (MOSI),           // to slaves
-            .SCLK        (SCLK),           // to slaves
-            .MISO        (MISO),            // from selected slave
-            .ACCELEROMETER_SELECT_N     (ACCELEROMETER_SELECT_N)   // to accelerometer slave    
+            .MOSI        (aclMOSI),           // to slaves
+            .SCLK        (aclSCK),           // to slaves
+            .MISO        (aclMISO),            // from selected slave
+            .ACCELEROMETER_SELECT_N     (aclSSn)   // to accelerometer slave    
     );
 
 endmodule
