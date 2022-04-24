@@ -82,10 +82,10 @@ module TB_AHBspimaster(    );
 			AHBidle;
 			#3500;							// delay to allow actions to complete
 			AHBread(WORD, SPI_CTRL, 32'h1);
-            AHBread(WORD, RXDATA, 32'h16);	
-            AHBwrite(WORD, SPI_CTRL, 32'h0);
+            		AHBread(WORD, RXDATA, 32'h16);	
+            		AHBwrite(WORD, SPI_CTRL, 32'h0);
 			AHBidle;
-            #500;
+            		#500;
 			$stop;							// stop the simulation
 		end
 
